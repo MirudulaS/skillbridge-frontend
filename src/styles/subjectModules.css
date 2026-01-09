@@ -1,0 +1,37 @@
+.subject-root {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  height: 100vh;
+}
+
+.module-sidebar {
+  background: var(--bg-panel);
+  padding: 32px;
+  border-right: 1px solid var(--border-light);
+}
+
+.module-item {
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  background: var(--blue-soft);
+  cursor: pointer;
+}
+
+.module-item.locked {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.module-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.module-card {
+  background: var(--bg-panel);
+  padding: 48px;
+  border-radius: 24px;
+  width: 520px;
+}

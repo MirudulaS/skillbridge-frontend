@@ -1,0 +1,259 @@
+:root {
+  --primary: #2563EB;
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --text-primary: #0F172A;
+  --text-muted: #64748B;
+  --border: #E5E7EB;
+  --success: #16A34A;
+  --error: #DC2626;
+}
+
+/* NAVBAR */
+.topbar {
+  height: 76px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.nav span {
+  margin-left: 34px;
+  font-size: 21px;
+  color: var(--text-muted);
+}
+
+.logout {
+  color: var(--error);
+}
+
+/* BODY */
+.dashboard-body {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  height: calc(100vh - 76px);
+  background: var(--bg);
+}
+
+/* LEFT MODULES */
+.modules-column {
+  padding: 52px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.module-row {
+  background: var(--surface);
+  padding: 30px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 21px;
+}
+
+.module-row.active {
+  outline: 3px solid var(--primary);
+}
+
+/* RIGHT */
+.details-column {
+  padding: 72px;
+}
+
+.details-column h2 {
+  font-size: 35px;
+  margin-bottom: 34px;
+}
+
+/* SUBMODULE LIST */
+.submodule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* PREVIEW (collapsed state) */
+.submodule-preview {
+  background: var(--surface);
+  padding: 26px 30px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 22px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.submodule-preview:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.08);
+}
+
+.submodule-preview.hidden {
+  display: none;
+}
+
+/* ================================
+   SMOOTH TRANSITION LINE (KEY PART)
+================================ */
+
+/* Wrapper controls expand/collapse smoothly */
+.submodule-wrapper {
+  overflow: hidden;
+}
+
+/* Expanded container */
+.submodule-expanded {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 28px;
+
+  /* animation properties */
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+
+  transition:
+    max-height 0.45s ease,
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+/* When visible */
+.animate-in {
+  max-height: 420px; /* enough to contain tasks */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* LEFT VERTICAL LINE / STRIP */
+.submodule-strip {
+  background: #E0E7FF;
+  color: var(--text-primary);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  cursor: pointer;
+
+  /* subtle line animation feel */
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.submodule-strip:hover {
+  box-shadow: inset 0 0 0 2px var(--primary);
+}
+
+/* TASK STACK */
+.task-stack.horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* TASK ROW */
+.task-row {
+  background: var(--surface);
+  padding: 18px 24px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+
+  /* smooth task entrance */
+  animation: taskFade 0.35s ease forwards;
+}
+
+@keyframes taskFade {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* TASK STATUS */
+.task-pending {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+}
+
+.task-done {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--success);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+/* PROGRESS CIRCLE */
+.progress-circle {
+  --size: 52px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--primary) calc(var(--value) * 1%),
+    var(--border) 0
+  );
+  display: grid;
+  place-items: center;
+}
+
+.progress-circle span {
+  background: var(--surface);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.task-row.clickable {
+  cursor: pointer;
+}
+
+/* ================= LEFT SIDE TEXT SIZE ================= */
+.task1-left {
+  font-size: 24px;
+  line-height: 1.6;
+}
+
+/* ================= LEFT MARK AS DONE BUTTON SIZE FIX ================= */
+/* Make left-side button same size as right-side button */
+.task1-left .done-btn {
+  width: 220px;       /* matches right side */
+  font-size: 16px;    /* smaller than text */
+  padding: 12px 0;
+}
