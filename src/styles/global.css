@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+:root {
+  --bg-main: #f4f8fb;
+  --bg-panel: #fdfefe;
+
+  /* Carolina Blue */
+  --blue-main:   #4b9cd3;
+  --blue-soft: #dbeefd;
+  --blue-hover: #2f80c3;
+
+  --text-main: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+
+  --success: #2da44e;
+  --locked: #94a3b8;
+
+  --border-light: #dbe7f1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-secondary);
+}
+
+
+.app-root {
+  display: flex;
+  height: 100vh;
+  background: var(--mint-bg);
+}

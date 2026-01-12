@@ -1,0 +1,39 @@
+.topbar.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  z-index: 1000;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 25px;
+  color: #0f172a;
+}
+
+.nav span {
+  margin-left: 34px;
+  font-size: 21px;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.logout {
+  color: #dc2626;
+}
+
+/* pushes every page below navbar */
+.page-content {
+  padding-top: 76px;
+}
+.page-wrapper {
+  padding-top: 64px; /* must match navbar height */
+}
